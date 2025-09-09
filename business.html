@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ITビジネス_テスト対策.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h3 id="2025%E5%B9%B4%E5%BA%A6-%E5%89%8D%E6%9C%9F-it%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9-%E3%83%86%E3%82%B9%E3%83%88%E5%AF%BE%E7%AD%96-csv%E5%8F%8D%E6%98%A0%E3%83%BB%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E7%89%88">2025年度　前期　ITビジネス　テスト対策 (CSV反映・ランダム版)</h3>
+<hr>
+<h2 id="%E5%95%8F%E9%A1%8C">問題</h2>
+<p><strong>問題1</strong>
+<br>
+次のうち、「検索エンジンマーケティング」を意味する用語はどれか。</p>
+<table style="width:100%">
+    <tr>
+        <td style="width:25%">A. SEO</td>
+        <td style="width:25%">B. SNS</td>
+        <td style="width:25%">C. SEM</td>
+        <td style="width:25%">D. CRM</td>
+    </tr>
+</table>
+<br>
+<p><strong>解答: C. SEM</strong>
+<br>
+<strong>ポイント:</strong> SEM (Search Engine Marketing) は、検索エンジンからのウェブサイトへの訪問者を増やすためのマーケティング手法の総称です。後述するSEOや、リスティング広告（検索結果に表示される広告）などが含まれます。</p>
+<hr>
+<p><strong>問題2</strong>
+<br>
+次のうち、顧客情報や購買履歴などを一元管理して、顧客との関係性を強化するためのシステムはどれか。</p>
+<table style="width:100%">
+    <tr>
+        <td style="width:25%">A. SNS</td>
+        <td style="width:25%">B. CRM</td>
+        <td style="width:25%">C. IoT</td>
+        <td style="width:25%">D. RFM</td>
+    </tr>
+</table>
+<br>
+<p><strong>解答: B. CRM</strong>
+<br>
+<strong>ポイント:</strong> CRM (Customer Relationship Management) は、顧客情報、購買履歴、問い合わせ履歴などを一元管理し、顧客一人ひとりに合わせた対応を行うことで、長期的な良好な関係を築くための経営手法またはそのためのシステムを指します。</p>
+<hr>
+<p><strong>問題3</strong>
+<br>
+次のうち、「人工知能」を意味する用語はどれか。</p>
+<table style="width:100%">
+    <tr>
+        <td style="width:25%">A. SEO</td>
+        <td style="width:25%">B. AI</td>
+        <td style="width:25%">C. SNS</td>
+        <td style="width:25%">D. SEM</td>
+    </tr>
+</table>
+<br>
+<p><strong>解答: B. AI</strong>
+<br>
+<strong>ポイント:</strong> AI (Artificial Intelligence) は、人間の学習能力、推論能力、判断能力などをコンピュータ上で実現する技術の総称です。近年では、特にディープラーニングを用いた生成AIが注目されています。</p>
+<hr>
+<p><strong>問題4</strong>
+<br>
+次のうち、AIに対して指示を与えるために使用されるテキストはどれか。</p>
+<table style="width:100%">
+    <tr>
+        <td style="width:25%">A. プロンプト</td>
+        <td style="width:25%">B. SEO</td>
+        <td style="width:25%">C. SNS</td>
+        <td style="width:25%">D. SEM</td>
+    </tr>
+</table>
+<br>
+<p><strong>解答: A. プロンプト</strong>
+<br>
+<strong>ポイント:</strong> プロンプト (Prompt) は、生成AIに対して、どのような文章、画像、アイデアなどを生成してほしいかを伝えるための指示文です。プロンプトの質が、生成されるコンテンツの質を大きく左右します。</p>
+<hr>
+<p><strong>問題5</strong>
+<br>
+次のうち、ユーザー同士が情報を共有し、交流できるインターネット上のサービスを指すのはどれか。</p>
+<table style="width:100%">
+    <tr>
+        <td style="width:25%">A. CRM</td>
+        <td style="width:25%">B. IoT</td>
+        <td style="width:25%">C. SNS</td>
+        <td style="width:25%">D. RFM</td>
+    </tr>
+</table>
+<br>
+<p><strong>解答: C. SNS</strong>
+<br>
+<strong>ポイント:</strong> SNS (Social Networking Service) は、社会的ネットワークをインターネット上で構築するサービスです。Facebook, X (旧Twitter), Instagramなどが代表例です。</p>
+<hr>
+<p><strong>問題6</strong>
+<br>
+次のうち、「生成AI」に関する最も適切な説明はどれか。</p>
+<table style="width:100%">
+    <tr>
+        <td style="width:25%">A. 人間の行動を記録して分析する技術</td>
+        <td style="width:25%">B. 商品の販売データを管理するシステム</td>
+        <td style="width:25%">C. 人間のように文章や画像を生成する技術</td>
+        <td style="width:25%">D. 検索エンジンの表示順位を操作する技術</td>
+    </tr>
+</table>
+<br>
+<p><strong>解答: C. 人間のように文章や画像を生成する技術</strong>
+<br>
+<strong>ポイント:</strong> 生成AI (Generative AI) は、大量のデータを学習し、そのデータの中にあるパターンや構造を基にして、新しいオリジナルのコンテンツ（文章、画像、音楽など）を生成するAIの一分野です。</p>
+<hr>
+<p><strong>問題7</strong>
+<br>
+あなたが知っている生成AI（モデル・ツール問わず）を5つ書いてください。</p>
+<br>
+<p><strong>解答例:</strong>
+<br></p>
+<ul>
+<li>ChatGPT (OpenAI)</li>
+<li>Gemini (Google)</li>
+<li>Claude (Anthropic)</li>
+<li>Copilot (Microsoft)</li>
+<li>Midjourney (Midjourney, Inc.)
+<br>
+<strong>ポイント:</strong> 解答は上記に限りません。文章生成、画像生成、動画生成、音楽生成など、様々な分野で生成AIのモデルやツールが開発されています。(例: Stable Diffusion, DALL-E, Sora, Suno AIなど)</li>
+</ul>
+<hr>
+<p><strong>問題8</strong>
+<br>
+次のうち、顧客の購買行動などを分析してマーケティング活動を行うために使用される手法はどれか。</p>
+<table style="width:100%">
+    <tr>
+        <td style="width:25%">A. RFM分析</td>
+        <td style="width:25%">B. SNS</td>
+        <td style="width:25%">C. IoT</td>
+        <td style="width:25%">D. SEO</td>
+    </tr>
+</table>
+<br>
+<p><strong>解答: A. RFM分析</strong>
+<br>
+<strong>ポイント:</strong> RFM分析は、顧客分析手法の一つで、[R]ecency (最終購入日)、[F]requency (購入頻度)、[M]onetary (購入金額) の3つの指標で顧客をグループ分けし、それぞれのグループに合わせたマーケティング施策を行う手法です。</p>
+<hr>
+<p><strong>問題9</strong>
+<br>
+次のうち、複数のデバイスがインターネットを介して情報を交換し、連携する技術を指すのはどれか。</p>
+<table style="width:100%">
+    <tr>
+        <td style="width:25%">A. CRM</td>
+        <td style="width:25%">B. SNS</td>
+        <td style="width:25%">C. IoT</td>
+        <td style="width:25%">D. SEO</td>
+    </tr>
+</table>
+<br>
+<p><strong>解答: C. IoT</strong>
+<br>
+<strong>ポイント:</strong> IoT (Internet of Things) は、「モノのインターネット」と訳されます。従来インターネットに接続されていなかった様々なモノ（家電、自動車、工場の機械など）が、インターネットを通じて相互に情報をやり取りする仕組みです。</p>
+<hr>
+<p><strong>問題10</strong>
+<br>
+次のうち、「検索エンジン最適化」を意味する用語はどれか。</p>
+<table style="width:100%">
+    <tr>
+        <td style="width:25%">A. SEM</td>
+        <td style="width:25%">B. SEO</td>
+        <td style="width:25%">C. CRM</td>
+        <td style="width:25%">D. SNS</td>
+    </tr>
+</table>
+<br>
+<p><strong>解答: B. SEO</strong>
+<br>
+<strong>ポイント:</strong> SEO (Search Engine Optimization) は、Googleなどの検索エンジンで特定のキーワードが検索された際に、自社のウェブサイトが検索結果の上位に表示されるように、ウェブサイトの構造やコンテンツを調整・最適化することです。</p>
+<hr>
+
+</body>
+</html>

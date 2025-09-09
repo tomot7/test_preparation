@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テスト対策統合ページ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #6200ee, #3700b3);
+            color: white;
+            padding: 0 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-content {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 72px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background-color: white;
+            color: #6200ee;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .navbar-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        .nav-link {
+            padding: 10px 18px;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .nav-link.active {
+            background-color: white;
+            color: #6200ee;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 24px auto;
+            padding: 0 16px;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #6200ee;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-title i {
+            font-size: 2rem;
+        }
+
+        .card-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .selection-card {
+            background: linear-gradient(135deg, #ffffff, #f8f8f8);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 32px 24px;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .selection-card:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transform: translateY(-6px);
+        }
+
+        .selection-card i {
+            font-size: 3.5rem;
+            color: #6200ee;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #6200ee, #3700b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .selection-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .selection-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb-item {
+            color: #666;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .breadcrumb-item:hover {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        .breadcrumb-item.active {
+            color: #6200ee;
+            font-weight: 500;
+            cursor: default;
+            background-color: transparent;
+        }
+
+        .breadcrumb-item.active:hover {
+            background-color: transparent;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 12px;
+            color: #999;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #6200ee, #3700b3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            margin-bottom: 24px;
+            border: none;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(98, 0, 238, 0.3);
+        }
+
+        .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .disabled:hover {
+            transform: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .navbar-content {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 0;
+                gap: 12px;
+            }
+            
+            .logo-container {
+                margin-bottom: 8px;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .container {
+                margin: 16px auto;
+            }
+            
+            .card {
+                padding: 24px;
+            }
+            
+            .iframe-container {
+                height: 60vh;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <span class="material-icons">dashboard</span>
+                </div>
+                <div class="navbar-title">テスト対策統合ページ</div>
+            </div>
+            <div class="nav-links">
+                <div class="nav-link active" onclick="showPage('home')">ホーム</div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- ホームページ -->
+        <div id="home" class="page active">
+            <div class="card">
+                <h2 class="card-title"><span class="material-icons">home</span> テスト対策ダッシュボード</h2>
+                <div class="card-content">
+                    <p>ようこそ、テスト対策統合ページへ。</p>
+                    <p>以下の年度を選択してください。</p>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="selection-card" onclick="showSemesters('2025')">
+                    <i class="material-icons">calendar_today</i>
+                    <h3>2025年度</h3>
+                    <p>前期・後期のテスト対策</p>
+                </div>
+                
+                <div class="selection-card" onclick="alert('2026年度のテスト対策は準備中です')">
+                    <i class="material-icons">construction</i>
+                    <h3>2026年度</h3>
+                    <p>準備中</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 学期選択ページ -->
+        <div id="semesters" class="page">
+            <div class="breadcrumb">
+                <div class="breadcrumb-item" onclick="showPage('home')">ホーム</div>
+                <div class="breadcrumb-separator">›</div>
+                <div class="breadcrumb-item active">学期選択 (2025年度)</div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title"><span class="material-icons">date_range</span> 学期を選択してください</h2>
+                <div class="card-content">
+                    <p>2025年度の対象学期を選択してください。</p>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="selection-card" onclick="showSubjects('2025', '1')">
+                    <i class="material-icons">wb_sunny</i>
+                    <h3>前期</h3>
+                </div>
+                
+                <div class="selection-card disabled" onclick="alert('2025年度後期のテスト対策は準備中です')">
+                    <i class="material-icons">bedtime</i>
+                    <h3>後期</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- 科目選択ページ -->
+        <div id="subjects" class="page">
+            <div class="breadcrumb">
+                <div class="breadcrumb-item" onclick="showPage('home')">ホーム</div>
+                <div class="breadcrumb-separator">›</div>
+                <div class="breadcrumb-item" onclick="showSemesters('2025')">学期選択</div>
+                <div class="breadcrumb-separator">›</div>
+                <div class="breadcrumb-item active">科目選択</div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title"><span class="material-icons">menu_book</span> 科目を選択してください</h2>
+                <div class="card-content">
+                    <p><span id="semester-display"></span>の対象科目を選択してください。</p>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="selection-card" onclick="showSubjectPage(currentYear, currentSemester, 'business')">
+                    <i class="material-icons">description</i>
+                    <h3>ITビジネス</h3>
+                    <p>ビジネスモデルと戦略</p>
+                </div>
+                
+                <div class="selection-card" onclick="showSubjectPage(currentYear, currentSemester, 'technology')">
+                    <i class="material-icons">code</i>
+                    <h3>テクノロジ</h3>
+                    <p>プログラミングとシステム設計</p>
+                </div>
+                
+                <div class="selection-card" onclick="showSubjectPage(currentYear, currentSemester, 'management')">
+                    <i class="material-icons">manage_accounts</i>
+                    <h3>ITマネジメント</h3>
+                    <p>プロジェクトとリスク管理</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 各科目ページ -->
+        <div id="business-page" class="page">
+            <button class="back-button" onclick="goBackToSubjects()">
+                <span class="material-icons">arrow_back</span>
+                科目選択に戻る
+            </button>
+            
+            <div class="card">
+                <h2 class="card-title"><span class="material-icons">description</span> <span id="business-title"></span></h2>
+                <div class="card-content">
+                    <p>ITビジネスのテスト対策ページです。</p>
+                </div>
+            </div>
+            <iframe src="business.html" class="iframe-container"></iframe>
+        </div>
+
+        <div id="technology-page" class="page">
+            <button class="back-button" onclick="goBackToSubjects()">
+                <span class="material-icons">arrow_back</span>
+                科目選択に戻る
+            </button>
+            
+            <div class="card">
+                <h2 class="card-title"><span class="material-icons">code</span> <span id="technology-title"></span></h2>
+                <div class="card-content">
+                    <p>テクノロジのテスト対策ページです。</p>
+                </div>
+            </div>
+            <iframe src="technology.html" class="iframe-container"></iframe>
+        </div>
+
+        <div id="management-page" class="page">
+            <button class="back-button" onclick="goBackToSubjects()">
+                <span class="material-icons">arrow_back</span>
+                科目選択に戻る
+            </button>
+            
+            <div class="card">
+                <h2 class="card-title"><span class="material-icons">manage_accounts</span> <span id="management-title"></span></h2>
+                <div class="card-content">
+                    <p>ITマネジメントのテスト対策ページです。</p>
+                </div>
+            </div>
+            <iframe src="management.html" class="iframe-container"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // 現在選択中の年度と学期
+        let currentYear = '2025';
+        let currentSemester = '';
+
+        // ページを表示する関数
+        function showPage(pageId) {
+            // すべてのページを非表示にする
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // すべてのナビゲーションリンクのアクティブクラスを削除
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // 指定されたページを表示する
+            document.getElementById(pageId).classList.add('active');
+            
+            // ホームリンクをアクティブにする（ページIdがhomeの場合）
+            if (pageId === 'home') {
+                const homeLink = document.querySelector('.nav-link[onclick="showPage(\'home\')"]');
+                if (homeLink) homeLink.classList.add('active');
+            }
+        }
+
+        // 学期選択ページを表示
+        function showSemesters(year) {
+            currentYear = year;
+            showPage('semesters');
+            
+            // URLハッシュを更新
+            window.location.hash = `semesters-${year}`;
+        }
+
+        // 科目選択ページを表示
+        function showSubjects(year, semester) {
+            // 後期の場合はアラートを表示して処理を中断
+            if (semester === '2') {
+                alert('2025年度後期のテスト対策は準備中です');
+                return;
+            }
+            
+            currentYear = year;
+            currentSemester = semester;
+            
+            // 学期表示を更新
+            const semesterName = semester === '1' ? '2025年度前期' : '2025年度後期';
+            document.getElementById('semester-display').textContent = semesterName;
+            
+            showPage('subjects');
+            
+            // URLハッシュを更新
+            window.location.hash = `subjects-${year}-${semester}`;
+        }
+
+        // 科目ページを表示
+        function showSubjectPage(year, semester, subject) {
+            // ページタイトルを更新
+            updatePageTitles(year, semester, subject);
+            
+            // 対応するページを表示
+            const pageId = `${subject}-page`;
+            showPage(pageId);
+            
+            // URLハッシュを更新
+            window.location.hash = `subject-${year}-${semester}-${subject}`;
+        }
+
+        // ページタイトルを更新
+        function updatePageTitles(year, semester, subject) {
+            const semesterName = semester === '1' ? '前期' : '後期';
+            const subjectNames = {
+                'business': 'ITビジネス',
+                'technology': 'テクノロジ',
+                'management': 'ITマネジメント'
+            };
+            
+            const title = `${year}年度${semesterName} - ${subjectNames[subject]}`;
+            
+            if (subject === 'business') {
+                document.getElementById('business-title').textContent = title;
+            } else if (subject === 'technology') {
+                document.getElementById('technology-title').textContent = title;
+            } else if (subject === 'management') {
+                document.getElementById('management-title').textContent = title;
+            }
+        }
+
+        // 科目選択ページに戻る
+        function goBackToSubjects() {
+            showPage('subjects');
+            window.location.hash = `subjects-${currentYear}-${currentSemester}`;
+        }
+
+        // URLハッシュの変更を監視してページを切り替える
+        function handleHashChange() {
+            const hash = window.location.hash.substring(1); // #を削除
+            
+            if (!hash) {
+                showPage('home');
+                return;
+            }
+            
+            // ハッシュの形式に応じて処理を分岐
+            if (hash.startsWith('semesters-')) {
+                const year = hash.split('-')[1];
+                showSemesters(year);
+            } else if (hash.startsWith('subjects-')) {
+                const parts = hash.split('-');
+                if (parts.length >= 3) {
+                    showSubjects(parts[1], parts[2]);
+                }
+            } else if (hash.startsWith('subject-')) {
+                const parts = hash.split('-');
+                if (parts.length >= 4) {
+                    // ページタイトルを更新
+                    updatePageTitles(parts[1], parts[2], parts[3]);
+                    showPage(`${parts[3]}-page`);
+                }
+            } else {
+                // 無効なハッシュの場合はホームに戻す
+                showPage('home');
+            }
+        }
+
+        // ページ読み込み時にURLハッシュをチェック
+        window.addEventListener('load', handleHashChange);
+        
+        // URLハッシュの変更を監視
+        window.addEventListener('hashchange', handleHashChange);
+    </script>
+</body>
+</html>
